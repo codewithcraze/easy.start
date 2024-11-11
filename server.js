@@ -46,7 +46,7 @@ const bodyParser = require('body-parser');
 // Connection to the database.
 const port = process.env.PORT || 3002;
 (async () => {
-    const connection = await mongoose.connect(`mongodb://${process.env.DB_HOST}/saverfare`);
+    const connection = await mongoose.connect(`${process.env.DB_HOST}`);
     if(connection){
         console.log('Connected to DB successfully');
     }else{
@@ -64,6 +64,29 @@ app.use(bodyParser.json());
 app.use('/api', routes);
 
 // Error handling.
+
+const connectWithRetry = async (retries = 5, delay = 3000) => {
+    for (let i = 0; i < retries; i++) {
+        try {
+            const connection = await mongoose.connect(`${process.env.DB_HOST}`);
+            if (connection) {
+                console.log('Connected to DB successfully');
+                return; // Exit the function if connected
+            }
+        } catch (error) {
+            console.log(`Connection attempt ${i + 1} failed. Retrying in ${delay / 1000} seconds...`, error);
+            if (i < retries - 1) {
+                await new Promise(resolve => setTimeout(resolve, delay)); // Wait before retrying
+            } else {
+                console.error('Failed to connect to the DB after maximum retries.');
+            }
+        }
+    }
+};
+
+(async () => {
+    await connectWithRetry();
+})();
 
 
 
