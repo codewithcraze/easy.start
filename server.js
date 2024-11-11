@@ -15,6 +15,13 @@ const passport = require('passport');
 const { jwtStrategy } = require('./middleware/passport'); // Getting the jwtStrategy
 const { handleError }  = require('./middleware/apierror');
 
+
+
+app.get('/', (req, res) => {
+    res.send('API is working Correctly');
+})
+
+
 app.get('/media/:filename', (req, res, next) => {
     const { filename } = req.params;
     const filePath = path.join(__dirname, 'uploads', filename);
@@ -58,11 +65,7 @@ const port = process.env.PORT || 3002;
 // parsing.
 app.use(bodyParser.json());
 
-
-
-
 app.use('/api', routes);
-
 // Error handling.
 
 const connectWithRetry = async (retries = 5, delay = 3000) => {
