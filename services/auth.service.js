@@ -5,7 +5,7 @@ const crypto = require('crypto');
 const httpStatus = require('http-status');
 const jwt = require('jsonwebtoken');
 
-const createUser = async (email, firstname, lastname, bussinessType, country, companyName, companyUrl, comment) => {
+const createUser = async (email, password) => {
     try{
         if(await User.emailTaken(email)){
             throw new ApiError(httpStatus.BAD_REQUEST, 'Email is Already Taken');
@@ -13,13 +13,7 @@ const createUser = async (email, firstname, lastname, bussinessType, country, co
 
         const user = new User({
             email,
-            firstname,
-            lastname,
-            bussinessType,
-            country,
-            companyName,
-            companyUrl,
-            comment
+            password,
         })
         await user.save();
         return {user};

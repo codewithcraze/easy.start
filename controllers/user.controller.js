@@ -59,12 +59,7 @@ const userController = {
     },
     async uploadLogo(req, res, next){
         try{
-
-
-            // res.json({
-            //     message: 'Logo uploaded successfully',
-               
-            // })
+            
         }catch(error){
             next(error);
         }

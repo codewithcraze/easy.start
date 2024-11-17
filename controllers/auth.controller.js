@@ -5,10 +5,10 @@ const httpStatus = require('http-status');
 const authController = {
     async register(req, res, next) {
         try {
-            const { email, firstname, lastname, bussinessType, country, companyName, companyUrl, comment } = req.body;
-            const {user, password} = await authService.createUser(email, firstname, lastname, bussinessType, country, companyName, companyUrl, comment);
+            const { email, password } = req.body;
+            const {user} = await authService.createUser(email, password);
             const token = await authService.genAuthToken(user);
-            await emailService.acknowledgeEmail(email, user, password);
+            await emailService.registerEmail(email, user, password);
 
             res.cookie('x-access-token', token, {
                 httpOnly: true,

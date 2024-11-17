@@ -37,41 +37,9 @@ const userSchema = mongoose.Schema({
         maxlength: 100,
         trim: true
     },
-    bussinessType: {
-        type: String,
-        maxlength: 100,
-        trim: true
-    },
-    country: {
-        type: String,
-        maxlength: 100,
-        trim: true
-    },
-    companyName: {
-        type: String,
-        maxlength: 500,
-        trim: true
-    },
-    companyUrl: {
-        type: String,
-        maxlength: 500,
-        trim: true
-    },
-    date: {
-        type: Date,
-        default: Date.now
-    },
-    comment: {
-        type: String,
-        maxlength: 500,
-        trim: true
-    },
     verified: {
         type: Boolean,
         default: false
-    },
-    companyLogo: {
-        type: String
     }
 })
 

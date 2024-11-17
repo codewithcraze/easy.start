@@ -16,7 +16,6 @@ const { jwtStrategy } = require('./middleware/passport'); // Getting the jwtStra
 const { handleError }  = require('./middleware/apierror');
 
 
-
 app.get('/', (req, res) => {
     res.send('API is working Correctly');
 })
