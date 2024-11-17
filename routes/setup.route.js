@@ -48,9 +48,18 @@ router.get('/', (req, res) => {
             margin-bottom: 8px;
         }
 
-        input, textarea {
+        input {
             width: 100%;
-            padding: 10px;
+            height: 40px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
             border: 1px solid #ddd;
             border-radius: 6px;
             margin-bottom: 10px;
