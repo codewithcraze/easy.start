@@ -9,6 +9,9 @@ router.get('/', (req, res) => {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Easy Start API Collection</title>
+    <meta name="description" content="Get started quickly with a fully-featured backend API collection for secure JWT authentication, role management, access control, and email services for user registration and password recovery. Perfect for rapid deployment and robust backend development.">
+<meta name="keywords" content="Backend API collection, JWT authentication, role management, access control, password recovery, secure API, email services API, quick start backend, API deployment, Node.js backend, REST API, rapid backend setup">
+
     <style>
         /* Global Styles */
         body {
