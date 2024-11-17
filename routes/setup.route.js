@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 10px;
             background-color: #f0f2f5;
         }
 
@@ -133,10 +133,18 @@ router.get('/', (req, res) => {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        
+        
+        .links{
+            display: flex; 
+            justify-content: space-between;
+            align-items: center;
+        }
 
         @media screen and (max-width: 768px) {
             .container {
-                padding: 15px;
+                padding: 10px;
+                margin: 0px 0px 0px 0px;
             }
 
             h1 {
@@ -151,6 +159,13 @@ router.get('/', (req, res) => {
             textarea {
                 font-size: 12px;
             }
+            
+            .links{
+                display: block;
+            }
+            body{
+                margin: 0px !important;
+            }
         }
     </style>
 </head>
@@ -158,7 +173,7 @@ router.get('/', (req, res) => {
 <body>
     <div class="container">
         <h1>Easy Start - Backend API Collection</h1>
-     <div style="display: flex; justify-content: space-between; align-items: center;">
+     <div class="links">
     <div><a href="https://github.com/codewithcraze/easy.start" class="download-link">Github Repo</a></div>
     <div><a href="/download" class="download-link">Download the Postman Collection</a></div>
 </div>
