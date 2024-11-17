@@ -4,19 +4,12 @@ const auth = require('../middleware/auth');
 const userController = require('../controllers/user.controller');
 // authentification middleware.
 
-
-
-
 router.route('/profile')
 .get(auth('readOwn', 'profile'), userController.profile)
-.patch(auth('updateOwn', 'profile'), userController.updateProfile )
+.patch(auth('updateOwn', 'profile'), userController.updateProfile)
 router.patch('/email', auth(), userController.updateEmail);
 
 router.route('/upload-logo').post(auth('updateOwn', 'profile'), userController.uploadLogo);
-
-
-
-
 
 router.get('/verify', userController.verifyEmail)
 

@@ -49,13 +49,10 @@ const authController = {
     },
     async resetPassword(req, res, next){
         try{
-            const { token, password, email } = req.body;
+            const { token, password } = req.body;
             const user = authService.validation(token);
-            if(user.email !== email){
-                throw new Error('Invalid token');
-            }
             const result = await userService.updatePassword(user, password);
-            await emailService.resetPasswordEmail(email, result, password);
+            await emailService.resetPasswordEmail(result.email);
             res.json({message: 'Password reset successfully', result});
         }catch(error){
             next(error);

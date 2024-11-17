@@ -1,0 +1,127 @@
+{
+	"info": {
+		"_postman_id": "abac358f-a0db-4996-b140-2ab8847895f2",
+		"name": "Easy Start",
+		"description": "### Backend API Collection: QuickStart Backend with JWT Authentication and Role Management\n\nThis API collection provides a fully-featured backend setup designed for rapid deployment, featuring secure **JWT-based authentication**, **role management**, and **access control**. It comes with a built-in **email service** for user registration and password recovery, allowing you to quickly integrate core functionality into your application.\n\n#### Key Features:\n\n- **JWT Authentication**: Secure user login with JSON Web Tokens for session management.\n    \n- **Role Management**: Define and manage user roles (e.g., Admin, User, Moderator) with customizable access controls for API routes.\n    \n- **Access Control**: Restrict API endpoints based on user roles, ensuring only authorized users can access certain resources.\n    \n- **Email Service**: Automated emails for user registration confirmation and password reset requests.\n    \n- **Secure Password Handling**: Passwords are encrypted for security, and password recovery functionality is included.\n    \n\nThis collection is ideal for any project requiring robust user management and access control, saving you time by providing a quick start backend setup with essential authentication and authorization mechanisms.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "37989349"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"codewithdeepak.in@gmail.com\",\r\n    \"password\": \"Deepak@123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:3002/api/auth/v1/register",
+				"description": "The request body for the user registration API should include the email and password as input parameters. If you need further details, please open the relevant request and try again."
+			},
+			"response": []
+		},
+		{
+			"name": "Sign In",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"codewithdeepak.in@gmail.com\",\r\n    \"password\": \"Deepak@123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://easy-start.codewithdeepak.in/api/auth/v1/signin",
+				"description": "This api have similar body like register API. It help you to authentificate user."
+			},
+			"response": []
+		},
+		{
+			"name": "IsAuth",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NzM5OWE5OGUzNDVlMjE1ODdmNDA0NWIiLCJlbWFpbCI6ImNvZGV3aXRoZGVlcGFrLmluQGdtYWlsLmNvbSIsImlhdCI6MTczMTgyOTE0NSwiZXhwIjoxNzMxOTE1NTQ1fQ.Z4KIRBO7oldVRSHGdIBPBZM5alLVzUFQsOaRXl8LuF8"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"codewithdeepak.in@gmail.com\",\r\n    \"password\": \"Deepak@123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://easy-start.codewithdeepak.in/api/auth/v1/isauth",
+				"description": "This will let you help in auto sigin user to application."
+			},
+			"response": []
+		},
+		{
+			"name": "forget-password",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NzM5OWE5OGUzNDVlMjE1ODdmNDA0NWIiLCJlbWFpbCI6ImNvZGV3aXRoZGVlcGFrLmluQGdtYWlsLmNvbSIsImlhdCI6MTczMTgyOTE0NSwiZXhwIjoxNzMxOTE1NTQ1fQ.Z4KIRBO7oldVRSHGdIBPBZM5alLVzUFQsOaRXl8LuF8"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"codewithdeepak.in@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://easy-start.codewithdeepak.in/api/auth/v1/forget-password",
+				"description": "This will let you help in auto forget user password to application."
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Password",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NzM5OWE5OGUzNDVlMjE1ODdmNDA0NWIiLCJlbWFpbCI6ImNvZGV3aXRoZGVlcGFrLmluQGdtYWlsLmNvbSIsImlhdCI6MTczMTgyOTE0NSwiZXhwIjoxNzMxOTE1NTQ1fQ.Z4KIRBO7oldVRSHGdIBPBZM5alLVzUFQsOaRXl8LuF8"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\": \"Deepak@123\",\r\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NzM5OWE5OGUzNDVlMjE1ODdmNDA0NWIiLCJlbWFpbCI6ImNvZGV3aXRoZGVlcGFrLmluQGdtYWlsLmNvbSIsImlhdCI6MTczMTgyOTk0MywiZXhwIjoxNzMxOTE2MzQzfQ.5ptsdHKbtaHZxMF5MN3mn9hVw8biAZPZeU2bjPK3kFM\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://easy-start.codewithdeepak.in/api/auth/v1/reset-password",
+				"description": "This will let you help in reset user password to application."
+			},
+			"response": []
+		}
+	]
+}

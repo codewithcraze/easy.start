@@ -139,7 +139,7 @@ const forgetPasswordEmail = async (userEmail, user, token) => {
     }
 };
 
-const resetPasswordEmail = async (userEmail, user, password) => {
+const resetPasswordEmail = async (userEmail) => {
     try {
         // Custom HTML email template
         const emailBody = `<!DOCTYPE html>
@@ -153,87 +153,6 @@ const resetPasswordEmail = async (userEmail, user, password) => {
             padding: 0;
             background-color: #f2faff;
         }
-        .container {
-            max-width: 700px;
-            margin: auto;
-            border-radius: 18px;
-        }
-        .header_main_img {
-            text-align: center;
-            padding: 30px;
-        }
-        .header {
-            background: linear-gradient(90deg, rgba(66, 133, 244, 0.79) 0%, rgba(66, 133, 244, 0.79) 100%);
-            background-color: rgba(31, 186, 150, 0.79);
-            padding: 25px;
-            color: #fff;
-            text-align: center;
-            border-radius: 0px 0px 0 0;
-        }
-        .header_text h1,
-        .header_text p {
-            margin: 0;
-        }
-        .content {
-            padding: 20px;
-            text-align: left;
-            background-color: #fff;
-            border-radius: 0 0 0px 0px;
-            border: 1px solid rgba(17, 140, 109, 0.16);
-        }
-        .footer {
-            padding: 20px;
-            font-size: 12px;
-            text-align: center;
-            color: #777;
-            background-color: #f8f8f8;
-            border-top: 1px solid #e0e0e0;
-        }
-        .footer_border_wrap {
-            border-bottom: 1px solid #F6F5F4;
-            margin: 20px 0;
-        }
-        .footer_text_copyright {
-            color: #111;
-            font-weight: 400;
-        }
-        .button {
-            text-decoration: none;
-            background: linear-gradient(90deg, rgba(66, 133, 244, 0.79) 0%, rgba(66, 133, 244, 0.79) 100%);
-            background-color: rgba(31, 186, 150, 0.79);
-            padding: 10px;
-            color: white !important;
-            border-radius: 4px;
-            display: inline-block;
-            font-weight: bold;
-        }
-        .button:hover {
-            color: rgba(31, 186, 150) !important;
-            border: 2px solid rgba(31, 186, 150);
-            background: white;
-        }
-        p {
-            font-size: 16px;
-            font-weight: 400;
-            line-height: 1.5;
-        }
-        .quote {
-            font-size: 18px;
-            font-weight: 600;
-            color: #4CAF50;
-            margin-top: 20px;
-            text-align: center;
-        }
-        @media screen and (max-width: 630px) {
-            .container {
-                max-width: 100% !important;
-                width: 100% !important;
-            }
-            .header,
-            .content {
-                padding: 10px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -242,7 +161,7 @@ const resetPasswordEmail = async (userEmail, user, password) => {
             <td class="content">
                 <div class="header">
                     <h1>Password Reset Successful</h1>
-                    <p>Dear ${user.firstname} ${user.lastname},</p>
+                    <p>Dear ${userEmail},</p>
                 </div>
 
                 <div class="content">
@@ -255,16 +174,6 @@ const resetPasswordEmail = async (userEmail, user, password) => {
                     <p>Best Regards,<br>The codewithdeepak Team</p>
                 </div>
 
-                <div class="footer">
-                    <p>Thank you for choosing <strong>codewithdeepak</strong>!</p>
-                    <p>Best regards,<br>The codewithdeepak Team</p>
-                    <div class="footer_border_wrap">
-                        <p>
-                            <a href="[Company Website]">[Company Website]</a> |
-                            <a href="[Privacy Policy Link]">Privacy Policy</a>
-                        </p>
-                    </div>
-                </div>
             </td>
         </table>
     </div>

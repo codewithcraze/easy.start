@@ -16,9 +16,19 @@ const { jwtStrategy } = require('./middleware/passport'); // Getting the jwtStra
 const { handleError }  = require('./middleware/apierror');
 
 
-app.get('/', (req, res) => {
-    res.send('API is working Correctly');
-})
+
+
+// Route to handle the file download
+app.get('/download', (req, res) => {
+    const filePath = path.join(__dirname, 'easy.start.json'); // Replace with the actual path of your JSON file
+    res.download(filePath, 'easy.start.json', (err) => {
+        if (err) {
+            console.error('Error downloading file:', err);
+            res.status(500).send('Could not download the file.');
+        }
+    });
+});
+
 
 
 app.get('/media/:filename', (req, res, next) => {
@@ -64,7 +74,7 @@ const port = process.env.PORT || 3002;
 // parsing.
 app.use(bodyParser.json());
 
-app.use('/api', routes);
+app.use('/', routes);
 // Error handling.
 
 const connectWithRetry = async (retries = 5, delay = 3000) => {
