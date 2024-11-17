@@ -15,7 +15,7 @@ const passport = require('passport');
 const { jwtStrategy } = require('./middleware/passport'); // Getting the jwtStrategy
 const { handleError }  = require('./middleware/apierror');
 
-
+const configShowcase = require('./routes/setup.route');
 
 
 // Route to handle the file download
@@ -74,7 +74,9 @@ const port = process.env.PORT || 3002;
 // parsing.
 app.use(bodyParser.json());
 
-app.use('/', routes);
+
+app.use('/', configShowcase)
+app.use('/api', routes);
 // Error handling.
 
 const connectWithRetry = async (retries = 5, delay = 3000) => {

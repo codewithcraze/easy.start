@@ -3,24 +3,19 @@ const router = express.Router();
 const authRoute = require('./auth.route');
 const userRoute = require('./user.route');
 const adminRoute = require('./admin.route');
-const setupRoute = require('./setup.route');
 
 const routesIndex = [
     {
-        path: 'api/auth/v1',
+        path: '/auth/v1',
         route: authRoute
     },
     {
-        path: 'api/users',
+        path: '/users',
         route: userRoute
     },
     {
-        path: 'api/admin',
+        path: '/admin',
         route: adminRoute
-    },
-    {
-        path: '/',
-        route: setupRoute
     }
 ]
 
