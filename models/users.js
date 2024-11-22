@@ -4,7 +4,6 @@ require('dotenv').config();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-
 const userSchema = mongoose.Schema({
     email: {
         type: String,
@@ -97,7 +96,7 @@ userSchema.pre('save', async function(next){
 
 userSchema.methods.generateAuthToken = function(){
     let user = this; // pointing to schema.
-    const userObj = {sub: user._id.toHexString(), email: user.email}
+    const userObj = {sub: user._id.toHexString(), email: user.email};
     const token = jwt.sign(userObj, process.env.DB_SECRET, {expiresIn: '1d'});
     return token;
 }

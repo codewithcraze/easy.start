@@ -14,6 +14,7 @@ const authController = {
                 httpOnly: true,
                 secure: false, // For development, set to false (true for HTTPS)
                 sameSite: 'strict',
+
             }).status(httpStatus.CREATED).send({ user, token });
         } catch (error) {
             next(error);
@@ -24,7 +25,7 @@ const authController = {
             const { email, password } = req.body;
             const user = await authService.signinfindEmailwithPassword(email, password);
             const token = await authService.genAuthToken(user);
-            res.cookie('x-access-token', token).status(httpStatus.CREATED).send({ user, token });
+            res.cookie('x-access-token', token, {httpOnly: true, secure: false, sameSite:'none', domain: 'localhost', maxAge: 3600000}).status(httpStatus.CREATED).send({ user, token, status: true });
         } catch (error) {
            next(error);
         }

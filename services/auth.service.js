@@ -10,7 +10,6 @@ const createUser = async (email, firstname, lastname, bussinessType, country, co
         if(await User.emailTaken(email)){
             throw new ApiError(httpStatus.BAD_REQUEST, 'Email is Already Taken');
         }
-
         const user = new User({
             email,
             firstname,
@@ -59,6 +58,7 @@ const findUserByEmail = async (email) => {
         throw error
     }
 }
+
 function generateRandomPassword(length = 20) {
     return crypto.randomBytes(length).toString('base64').slice(0, length);
 }
@@ -67,7 +67,6 @@ function validation (token) {
     const tok = jwt.verify(token, process.env.DB_SECRET);
     return tok;
 }
-
 
 module.exports = {
     createUser,

@@ -19,14 +19,14 @@ const handleError = (err, res) => {
         const statusCode = httpStatus.BAD_REQUEST;
         const message = Object.values(err.errors).map(e => e.message).join(', ');
         res.status(statusCode).json({
-            status: 'error',
+            status: false,
             statusCode,
             message,
         });
     } else {
         const { statusCode = httpStatus.INTERNAL_SERVER_ERROR, message = 'Internal Server Error' } = err;
         res.status(statusCode).json({
-            status: 'error',
+            status: false,
             statusCode,
             message,
         });

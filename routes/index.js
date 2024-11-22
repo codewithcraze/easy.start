@@ -3,7 +3,7 @@ const router = express.Router();
 const authRoute = require('./auth.route');
 const userRoute = require('./user.route');
 const adminRoute = require('./admin.route');
-
+const clientRoute = require('./client.route');
 
 const routesIndex = [
     {
@@ -17,6 +17,10 @@ const routesIndex = [
     {
         path: '/admin',
         route: adminRoute
+    },
+    {
+        path: '/client',
+        route: clientRoute
     }
 ]
 
